@@ -3,18 +3,20 @@ IoT-Based Smart Heart Disease Prediction and Prevention System
 
 #Project Overview
 HeartCare AI is an IoT-enabled healthcare system designed to monitor vital health parameters and predict the risk of heart disease using Machine Learning. The project combines IoT sensors, Raspberry Pi, and a Flask-based web application to provide real-time health monitoring, risk assessment, emergency assistance, and health analytics.
+
 The system aims to support early detection and prevention of cardiovascular diseases by continuously tracking health data and providing actionable insights to users.
 ## Features
 
-Heart Disease Risk Prediction using Machine Learning
-Real-Time Health Monitoring through IoT Sensors
-Heart Rate Monitoring
-Body Temperature Monitoring
-Health Analytics Dashboard
-Personalized Health Tips and Remedies
-Emergency Assistance Module
-Interactive Web-Based Interface
-AI-Powered Health Risk Assessment
+-  Heart Disease Risk Prediction using Machine Learning
+-  Real-Time Health Monitoring through IoT Sensors
+-  Heart Rate Monitoring
+-  Body Temperature Monitoring
+-  Health Analytics Dashboard
+-  Personalized Health Tips and Remedies
+-  Emergency Assistance Module
+-  Interactive Web-Based Interface
+-  AI-Powered Health Risk Assessment
+
 ## System Architecture
 
 IoT Sensors → Raspberry Pi → Flask Backend → Machine Learning Model → Web Dashboard
