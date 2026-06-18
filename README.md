@@ -61,7 +61,3 @@ IoT Sensors → Raspberry Pi → Flask Backend → Machine Learning Model → We
 
 ## Author
 **Ashwini Chandel**
-
-## 📜 License
-
-This project is developed for educational, research, and innovation purposes.
