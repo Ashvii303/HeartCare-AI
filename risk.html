@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Heart Risk Check</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+
+<div class="navbar">
+    <h2>Heart Risk Prediction</h2>
+</div>
+
+<div class="container">
+    <h2>Enter Your Details</h2>
+
+    <input type="text" placeholder="Age"><br><br>
+    <input type="text" placeholder="Blood Pressure"><br><br>
+    <input type="text" placeholder="Cholesterol"><br><br>
+    <input type="text" placeholder="Sugar Level"><br><br>
+
+    <button class="btn" onclick="predict()">Predict Risk</button>
+   {% if result %}
+<h2 style="color:red;">{{ result }}</h2>
+{% endif %}
+
+{% if tip %}
+<div class="card">
+<h3>🤖 AI Health Suggestions</h3>
+<p>{{ tip }}</p>
+</div>
+{% endif %}
+<h2>{{ session['result'] if 'result' in session else '' }}</h2>
+
+
+   <h2 id="result"></h2>
+   {% if remedies %}
+<div class="card">
+<h3>💊 AI Recommended Remedies</h3>
+<ul>
+{% for r in remedies %}
+<li>{{ r }}</li>
+{% endfor %}
+</ul>
+</div>
+{% endif %}
+
+
+   <a href="/graph">
+<button class="btn">📊 View Analytics</button>
+</a>
+<div id="meter" style="height:20px;width:200px;background:gray;margin:auto;border-radius:10px;">
+<div id="fill" style="height:20px;width:50%;background:green;border-radius:10px;"></div>
+</div>
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+<br><br>
+<a href="/">
+<button class="btn">⬅ Back to Dashboard</button>
+</a>
+</body>
+</html>

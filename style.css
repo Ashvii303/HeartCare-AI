@@ -1,0 +1,70 @@
+body{
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    background:linear-gradient(135deg,#ffe6f0,#fff5f8,#ffe0ec);
+    color:#333;
+}
+
+/* NAVBAR */
+.navbar{
+    background:white;
+    padding:18px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 4px 20px rgba(255,105,135,0.25);
+}
+
+.navbar h2{
+    color:#ff4d88;
+}
+
+/* CONTAINER */
+.container{
+    text-align:center;
+    padding:40px;
+}
+
+/* CARDS */
+.card{
+    background:white;
+    border-radius:20px;
+    padding:30px;
+    margin:25px auto;
+    width:60%;
+    box-shadow:0 15px 35px rgba(255,105,135,0.25);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-6px);
+}
+
+/* BUTTONS */
+.btn{
+    background:linear-gradient(45deg,#ff4d88,#ff80aa);
+    border:none;
+    padding:14px 28px;
+    margin:12px;
+    color:white;
+    font-size:15px;
+    border-radius:30px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.btn:hover{
+    transform:scale(1.08);
+}
+
+/* EMERGENCY */
+.emergency{
+    background:red;
+}
+
+/* FOOTER */
+footer{
+    margin-top:40px;
+    padding:18px;
+    background:white;
+}

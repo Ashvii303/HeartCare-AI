@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Health Analytics</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial;
+        }
+        canvas {
+            width: 80% !important;
+            max-width: 700px;
+            margin: 30px auto;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="navbar">
+    <h2>📊 Health Analytics Dashboard</h2>
+</div>
+
+<div class="container">
+    <h2 style="color:red">{{prediction_text}}</h2>
+
+    <h3>Blood Pressure Graph</h3>
+    <canvas id="bpChart"></canvas>
+
+    <h3>Heart Rate Graph</h3>
+    <canvas id="hrChart"></canvas>
+
+    <h3>Temperature Graph</h3>
+    <canvas id="tempChart"></canvas>
+
+</div>
+
+<script>
+
+let heart = {{ heart_rate }};
+let risk = "{{ prediction_text }}";
+let temp = {{ temp }};
+let bp = 120;
+
+let bpChart = new Chart(document.getElementById('bpChart'), {
+    type: 'line',
+    data: {
+        labels: [],
+        datasets: [{
+            label: 'Blood Pressure',
+            data: [],
+            borderWidth: 3
+        }]
+    }
+});
+
+let hrChart = new Chart(document.getElementById('hrChart'), {
+    type: 'line',
+    data: {
+        labels: [],
+        datasets: [{
+            label: 'Heart Rate',
+            data: [],
+            borderWidth: 3
+        }]
+    }
+});
+
+let tempChart = new Chart(document.getElementById('tempChart'), {
+    type: 'line',
+    data: {
+        labels: [],
+        datasets: [{
+            label: 'Temperature',
+            data: [],
+            borderWidth: 3
+        }]
+    }
+});
+
+let counter = 0;
+
+setInterval(() => {
+
+    counter++;
+
+    // 🔹 very slight realistic change
+   // realistic human variation
+function change(val, min, max){
+    let newVal = val + (Math.random()*(max-min)+min);
+
+    // keep in human safe range
+    if(newVal < 60) newVal = 65;
+    if(newVal > 130) newVal = 95;
+
+    return newVal;
+}
+
+let risk = "{{ prediction_text }}";
+
+if(risk.includes("High")){
+    heart = change(heart, -2, 2);
+    temp = change(temp, -0.2, 0.2);
+    bp = change(bp, -3, 3);
+}
+else{
+    heart = change(heart, -1, 1);
+    temp = change(temp, -0.05, 0.05);
+    bp = change(bp, -1.5, 1.5);
+}
+
+    // limit graph points
+    if (bpChart.data.labels.length > 15) {
+        bpChart.data.labels.shift();
+        bpChart.data.datasets[0].data.shift();
+
+        hrChart.data.labels.shift();
+        hrChart.data.datasets[0].data.shift();
+
+        tempChart.data.labels.shift();
+        tempChart.data.datasets[0].data.shift();
+    }
+
+    bpChart.data.labels.push(counter);
+    hrChart.data.labels.push(counter);
+    tempChart.data.labels.push(counter);
+
+    bpChart.data.datasets[0].data.push(Math.round(bp));
+    hrChart.data.datasets[0].data.push(Math.round(heart));
+    tempChart.data.datasets[0].data.push(temp.toFixed(2));
+
+    bpChart.update();
+    hrChart.update();
+    tempChart.update();
+
+}, 5000);   // every 5 seconds (human realistic)
+
+</script>
+
+</body>
+</html>

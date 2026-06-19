@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Emergency Help</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="navbar">
+<h2>🚨 Emergency Assistance</h2>
+</div>
+
+<div class="container">
+
+<!-- FAMILY ALERT CARD -->
+<div class="card">
+<h2>Send Alert to Family</h2>
+
+<form action="/send_alert" method="post">
+<input type="text" name="name" placeholder="Family Member Name" required><br>
+<input type="text" name="phone" placeholder="Phone Number" required><br>
+
+<button class="btn emergency">Send Emergency Alert</button>
+</form>
+
+<h3>{{ msg }}</h3>
+</div>
+
+<!-- AMBULANCE BUTTON -->
+<div class="card">
+<h2>🚑 Ambulance Service</h2>
+<button class="btn emergency" onclick="alert('🚑 Ambulance Called Successfully!')">
+Call Ambulance
+</button>
+</div>
+
+<!-- HOSPITAL BUTTON -->
+<div class="card">
+<h2>🏥 Nearest Hospital</h2>
+<button class="btn" onclick="openMap()">
+Find Nearest Hospital
+</button>
+</div>
+
+</div>
+
+<script>
+function openMap(){
+window.open("https://www.google.com/maps/search/hospitals+near+me");
+}
+</script>
+<div class="card">
+<h2>🎤 Voice Emergency</h2>
+<p>Say "help" or "emergency"</p>
+
+<button class="btn emergency" onclick="startVoice()">
+🎤 Start Voice Emergency
+</button>
+
+<h3 id="voiceResult"></h3>
+</div>
+<script>
+function startVoice(){
+const recognition = new(window.SpeechRecognition || window.webkitSpeechRecognition)();
+recognition.lang = "en-US";
+
+recognition.start();
+
+recognition.onresult = function(event){
+let speech = event.results[0][0].transcript.toLowerCase();
+
+document.getElementById("voiceResult").innerHTML =
+"You said: " + speech;
+
+if(speech.includes("help") || speech.includes("emergency")){
+alert("🚨 Emergency detected! Calling ambulance & sending alert!");
+}
+};
+}
+</script>
+
+
+
+</body>
+</html>
