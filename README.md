@@ -42,7 +42,7 @@ IoT Sensors → Raspberry Pi → Flask Backend → Machine Learning Model → We
 - NumPy
 - Matplotlib
 
-- ## 🚀 Installation
+## 🚀 Installation
 
 Clone the repository
 
@@ -80,7 +80,7 @@ HeartCare-AI/
 ├── app.py
 ├── requirements.txt
 ├── README.md
-└── .gitignore
+
 ```
 
 ## 🎯 Objectives
