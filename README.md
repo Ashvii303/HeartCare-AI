@@ -42,6 +42,46 @@ IoT Sensors → Raspberry Pi → Flask Backend → Machine Learning Model → We
 - NumPy
 - Matplotlib
 
+- ## 🚀 Installation
+
+Clone the repository
+
+```bash
+git clone https://github.com/YourUsername/HeartCare-AI.git
+```
+
+Move into the project
+
+```bash
+cd HeartCare-AI
+```
+
+Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+Run the project
+
+```bash
+python app.py
+```
+
+## 📂 Project Structure
+
+```text
+HeartCare-AI/
+│
+├── data/
+├── model/
+├── templates/
+├── static/
+├── app.py
+├── requirements.txt
+├── README.md
+└── .gitignore
+```
 
 ## 🎯 Objectives
 
@@ -61,5 +101,7 @@ IoT Sensors → Raspberry Pi → Flask Backend → Machine Learning Model → We
 - Wearable Device Integration
 
 
-## Author
-**Ashwini Chandel**
+## 📄 License
+
+This project is developed for educational, research, and demonstration purposes.
+
